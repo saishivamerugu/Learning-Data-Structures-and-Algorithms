@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Logic30 — a 30-day programming logic building challenge." />
+  <title>Logic30 — 30 Days of Logic Building</title>
+
+  <script>
+    try {
+      const saved = localStorage.getItem("logic30Theme");
+      if (saved) document.documentElement.dataset.theme = saved;
+    } catch {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.468.0/font/Lucide.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark"><i data-lucide="brain"></i></div>
+        <div>
+          <div class="brand-name">Logic<span>30</span></div>
+          <div class="brand-sub">Think. Solve. Repeat.</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section-label">LEARN</div>
+      <nav class="side-nav">
+        <button class="nav-item active" data-view="dashboard">
+          <i data-lucide="layout-dashboard"></i><span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-view="challenge">
+          <i data-lucide="list-checks"></i><span>30 Day Challenge</span>
+        </button>
+        <button class="nav-item" data-view="notes">
+          <i data-lucide="notebook-tabs"></i><span>Notes</span>
+        </button>
+        <button class="nav-item" data-view="resources">
+          <i data-lucide="play-square"></i><span>Videos & Resources</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-section-label">TRACK</div>
+      <nav class="side-nav">
+        <button class="nav-item" data-view="progress">
+          <i data-lucide="chart-no-axes-column"></i><span>Progress</span>
+        </button>
+        <button class="nav-item" data-view="bookmarks">
+          <i data-lucide="bookmark"></i><span>Bookmarks</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a class="creator-card" href="https://www.instagram.com/the_shiva.03/" target="_blank" rel="noopener noreferrer">
+          <div class="creator-avatar"><i data-lucide="instagram"></i></div>
+          <div>
+            <strong>@the_shiva.03</strong>
+            <span>Follow the journey</span>
+          </div>
+          <i data-lucide="arrow-up-right" class="creator-arrow"></i>
+        </a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="menuBtn" aria-label="Open menu">
+          <i data-lucide="menu"></i>
+        </button>
+
+        <div class="breadcrumb">
+          <span>Logic30</span><i data-lucide="chevron-right"></i><strong id="breadcrumbCurrent">Dashboard</strong>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="icon-btn" id="themeBtn" aria-label="Toggle theme" title="Toggle light/dark theme">
+            <i data-lucide="sun"></i>
+          </button>
+          <a class="top-instagram" href="https://www.instagram.com/the_shiva.03/" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="instagram"></i><span>Instagram</span>
+          </a>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <!-- DASHBOARD -->
+        <section class="view active" id="view-dashboard">
+          <div class="hero-grid">
+            <div class="hero-panel">
+              <div class="eyebrow"><span class="pulse-dot"></span> 30 DAY LOGIC BUILDING PROJECT</div>
+              <h1>Build the habit of<br><span>thinking in logic.</span></h1>
+              <p>5 carefully designed problems every day. Start from the fundamentals and progressively learn to break real programming problems into steps.</p>
+              <div class="hero-actions">
+                <button class="btn btn-dark" data-go="challenge"><i data-lucide="play"></i> Continue Challenge</button>
+                <a class="btn btn-ghost" href="https://nebula-keyboard-8f9.notion.site/All-Links-3ac4b1b3970480d8baadf1218756e448" target="_blank" rel="noopener noreferrer"><i data-lucide="external-link"></i> Open Notes</a>
+              </div>
+              <div class="hero-mini-stats">
+                <div><strong id="heroSolved">0</strong><span>solved</span></div>
+                <div><strong id="heroDay">1</strong><span>current day</span></div>
+                <div><strong id="heroPct">0%</strong><span>complete</span></div>
+              </div>
+            </div>
+
+            <div class="progress-panel">
+              <div class="panel-kicker">YOUR PROGRESS</div>
+              <div class="ring-wrap">
+                <div class="progress-ring" id="progressRing"><div><strong id="ringPct">0%</strong><span>complete</span></div></div>
+              </div>
+              <div class="progress-summary">
+                <div><span>Problems</span><strong><span id="summarySolved">0</span> / 150</strong></div>
+                <div><span>Streak</span><strong><span id="summaryStreak">0</span> days</strong></div>
+              </div>
+              <div class="bar-track"><div class="bar-fill" id="globalBar"></div></div>
+            </div>
+          </div>
+
+          <div class="section-head">
+            <div><span class="section-eyebrow">CONTINUE LEARNING</span><h2>Today's focus</h2></div>
+            <button class="text-btn" data-go="challenge">View all days <i data-lucide="arrow-right"></i></button>
+          </div>
+
+          <div class="focus-grid">
+            <div class="focus-card">
+              <div class="focus-number">DAY <strong id="todayNumber">01</strong></div>
+              <div class="focus-content"><span class="level-pill">FOUNDATION</span><h3 id="todayTitle">Think Before You Code</h3><p id="todayDesc">Learn how to break a simple problem into smaller logical decisions.</p></div>
+              <button class="circle-arrow" data-go="challenge" aria-label="Open today's challenge"><i data-lucide="arrow-up-right"></i></button>
+            </div>
+            <div class="quick-card">
+              <div class="quick-icon"><i data-lucide="target"></i></div>
+              <div><span>DAILY TARGET</span><strong>5 problems</strong><p>Try every problem before opening the solution.</p></div>
+            </div>
+          </div>
+
+          <div class="section-head compact">
+            <div><span class="section-eyebrow">30 DAY ROADMAP</span><h2>Challenge map</h2></div>
+          </div>
+          <div class="roadmap" id="dashboardRoadmap"></div>
+        </section>
+
+        <!-- CHALLENGE -->
+        <section class="view" id="view-challenge">
+          <div class="page-title-row">
+            <div><span class="section-eyebrow">THE COMPLETE SHEET</span><h1>30 Day Challenge</h1><p>150 problems designed to grow your programming logic from the ground up.</p></div>
+            <div class="filter-row">
+              <button class="filter-chip active" data-filter="all">All</button>
+              <button class="filter-chip" data-filter="available">Available</button>
+              <button class="filter-chip" data-filter="completed">Completed</button>
+            </div>
+          </div>
+          <div class="challenge-layout">
+            <div class="day-list" id="dayList"></div>
+            <div class="challenge-side">
+              <div class="side-summary">
+                <span>CHALLENGE PROGRESS</span><strong id="sidePercent">0%</strong>
+                <div class="bar-track"><div class="bar-fill" id="sideBar"></div></div>
+              </div>
+              <div class="side-tip"><i data-lucide="lightbulb"></i><div><strong>How to use this sheet</strong><p>Attempt first. Read the hint second. Check the solution last.</p></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- DAY DETAIL -->
+        <section class="view" id="view-day">
+          <button class="back-link" id="backChallenge"><i data-lucide="arrow-left"></i> Back to challenge</button>
+          <div class="day-detail-head">
+            <div><div class="day-detail-label" id="detailLevel">DAY 01 · FOUNDATION</div><h1 id="detailTitle">Think Before You Code</h1><p id="detailDesc"></p></div>
+            <div class="day-score-card"><span>DAY SCORE</span><strong id="detailScore">0 / 5</strong></div>
+          </div>
+          <div class="problem-layout">
+            <div class="problem-list" id="problemList"></div>
+            <aside class="problem-aside">
+              <div class="aside-box">
+                <div class="aside-icon"><i data-lucide="video"></i></div>
+                <span>LEARN WITH VIDEO</span>
+                <h3>Concept explanation</h3>
+                <p>Add the YouTube link for this day in the JavaScript data.</p>
+                <a id="dayVideo" class="btn btn-outline full" href="#" target="_blank" rel="noopener noreferrer"><i data-lucide="youtube"></i> Watch video</a>
+              </div>
+              <div class="aside-box">
+                <div class="aside-icon"><i data-lucide="file-text"></i></div>
+                <span>DAY NOTES</span>
+                <h3>Study resources</h3>
+                <p>Use your Notion notes alongside today's problems.</p>
+                <a class="btn btn-outline full" href="https://nebula-keyboard-8f9.notion.site/All-Links-3ac4b1b3970480d8baadf1218756e448" target="_blank" rel="noopener noreferrer"><i data-lucide="external-link"></i> Open notes</a>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- NOTES -->
+        <section class="view" id="view-notes">
+          <div class="page-title-row">
+            <div><span class="section-eyebrow">YOUR STUDY HUB</span><h1>Notes & Learning</h1><p>Keep your theory, reference material and supporting notes close to your daily practice.</p></div>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card-large"><div class="resource-icon"><i data-lucide="notebook-tabs"></i></div><span>NOTION</span><h3>All Links & Notes</h3><p>Your existing notes hub, resources and learning links.</p><a class="btn btn-dark" href="https://nebula-keyboard-8f9.notion.site/All-Links-3ac4b1b3970480d8baadf1218756e448" target="_blank" rel="noopener noreferrer">Open Notion <i data-lucide="arrow-up-right"></i></a></article>
+            <article class="resource-card-large"><div class="resource-icon"><i data-lucide="table-2"></i></div><span>LOGIC SHEET</span><h3>30-Day Practice Sheet</h3><p>Use the challenge dashboard as your live progress sheet.</p><button class="btn btn-outline" data-go="challenge">Open challenge <i data-lucide="arrow-right"></i></button></article>
+          </div>
+        </section>
+
+        <!-- RESOURCES -->
+        <section class="view" id="view-resources">
+          <div class="page-title-row">
+            <div><span class="section-eyebrow">WATCH & LEARN</span><h1>Videos & Resources</h1><p>Add YouTube lessons for each day so the website becomes a complete learning companion.</p></div>
+          </div>
+          <div class="video-grid" id="videoGrid"></div>
+        </section>
+
+        <!-- PROGRESS -->
+        <section class="view" id="view-progress">
+          <div class="page-title-row"><div><span class="section-eyebrow">TRACK YOUR JOURNEY</span><h1>Progress</h1><p>See exactly how far you have moved through the 150-problem challenge.</p></div></div>
+          <div class="stat-grid">
+            <div class="stat-card"><span>Problems solved</span><strong id="statSolved">0</strong><i data-lucide="check-check"></i></div>
+            <div class="stat-card"><span>Completion</span><strong id="statPct">0%</strong><i data-lucide="chart-no-axes-column"></i></div>
+            <div class="stat-card"><span>Current day</span><strong id="statDay">1</strong><i data-lucide="calendar-days"></i></div>
+            <div class="stat-card"><span>Days completed</span><strong id="statDays">0</strong><i data-lucide="trophy"></i></div>
+          </div>
+          <div class="progress-table" id="progressTable"></div>
+        </section>
+
+        <!-- BOOKMARKS -->
+        <section class="view" id="view-bookmarks">
+          <div class="page-title-row"><div><span class="section-eyebrow">SAVED FOR LATER</span><h1>Bookmarks</h1><p>Save problems you want to revisit.</p></div></div>
+          <div id="bookmarkList" class="bookmark-list"></div>
+        </section>
+      </div>
+
+      <footer class="site-footer">
+        <div><strong>Logic30</strong><span> · 30 Days · 150 Problems · One Stronger Mind</span></div>
+        <a href="https://www.instagram.com/the_shiva.03/" target="_blank" rel="noopener noreferrer">@the_shiva.03 <i data-lucide="arrow-up-right"></i></a>
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span id="toastText">Saved</span></div>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
