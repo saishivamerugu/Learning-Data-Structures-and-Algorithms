@@ -20,9 +20,9 @@ public class Implementation{
         System.out.println("size of stack is " + sizeOfStack);
 
         boolean isExist = stack.isEmpty();
-        System.out.println(
-            isExist ? "Elements not Exist empty" : "Elements Exist not empty"
-        );
+        System.out.println(isExist ? "Elements not Exist empty" : "Elements Exist not empty");
+
+        // Implementation using the array
         fixedSizeApproach();
     }
 
@@ -54,37 +54,30 @@ public class Implementation{
                     break;
                         
                 case 2: 
-                        if(top == -1){
-                            System.out.println("UndeFlow of the stack, No elements in the stack exists");
-                        } else {
-                            int poppedElement = stack[top];
-                            top--;
+                        if(top == -1) System.out.println("UndeFlow of the stack, No elements in the stack exists");
+                        else {
+                            int poppedElement = stack[top--];
                             System.out.println("popped element is " + poppedElement);
                         }
-                    break;
+                        break;
                 
                 case 3: 
                         if(top == -1) System.out.println("Stack is empty... no peek element");
-                        else {
-                            System.out.println("peek element is " + stack[top]);
-                        }
-                    break;
+                        else System.out.println("peek element is " + stack[top]);
+                        break;
             
                 case 4: 
-                        System.out.println(
-                            top == -1 ? "Empty" : "Not Empty"
-                        );
-                    break;
+                        System.out.println(top == -1 ? "Empty" : "Not Empty");
+                         break;
 
                 case 5: 
                         if(top == -1) System.out.println("No elements exist - size = 0");
-                        else {
-                            System.out.println(top+1 + " is the size of the element");
-                        }
-                    break;
+                        else System.out.println(top+1 + " is the size of the element");
+                        break;
                     
-                default: System.out.println("Enter correct option");
-                    break;
+                default: 
+                        System.out.println("Enter correct option");
+                        break;
             }
         }
         
