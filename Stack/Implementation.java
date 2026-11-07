@@ -23,7 +23,8 @@ public class Implementation{
         System.out.println(isExist ? "Elements not Exist empty" : "Elements Exist not empty");
 
         // Implementation using the array
-        fixedSizeApproach();
+        //fixedSizeApproach();
+        usingLinkedList();
     }
 
     public static void fixedSizeApproach(){
@@ -81,4 +82,102 @@ public class Implementation{
             }
         }
     }
+
+    public static void usingLinkedList() {
+
+        Node top = null;
+        int size = 0;
+
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+
+            System.out.println("1. Push");
+            System.out.println("2. Pop");
+            System.out.println("3. Peek");
+            System.out.println("4. Size");
+            System.out.println("5. isEmpty");
+            System.out.println("6. Display");
+            System.out.println("7. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter data: ");
+                    int data = sc.nextInt();
+                    Node newNode = new Node(data);
+                    newNode.next = top;
+                    top = newNode;
+                    size++;
+                    System.out.println("Element inserted: " + data);
+                    break;
+
+                case 2:
+
+                    if (top == null) System.out.println("Stack Underflow! Stack is empty.");
+                    else {
+                        int poppedElement = top.data;
+                        top = top.next;
+                        size--;
+                        System.out.println("Popped element: " + poppedElement);
+                    }
+                    break;
+
+                case 3:
+                    if (top == null) System.out.println("Stack is empty. No peek element.");
+                    else System.out.println("Peek element: " + top.data);
+                    break;
+
+                case 4:
+                    System.out.println("Stack size: " + size);
+                    break;
+
+                case 5:
+                    System.out.println(top == null
+                            ? "Stack is empty"
+                            : "Stack is not empty");
+                    break;
+
+                case 6:
+                    if (top == null) System.out.println("Stack is empty.");
+                    else {
+                        Node current = top;
+                        System.out.print("Stack elements: ");
+                        while (current != null) {
+                            System.out.print(current.data + " ");
+                            current = current.next;
+                        }
+                        System.out.println();
+                    }
+                    break;
+
+                case 7 : 
+                    return;
+
+                default:
+                    System.out.println("Enter a valid option.");
+                    break;
+            }
+        }
+    }
 }
+
+class Node {
+
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+/*
+In my linked-list implementation, I perform both insertion and deletion at the head of the linked list. The top pointer always points to the most recently inserted element.
+When I push 10 and then 20, the new node containing 20 becomes the head, and its next pointer references the node containing 10.
+Therefore, when I traverse the linked list starting from top, I get 20 followed by 10. This represents the stack's LIFO (Last In, First Out) behaviour."
+*/
