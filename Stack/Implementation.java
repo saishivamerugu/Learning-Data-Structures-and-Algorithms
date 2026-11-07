@@ -117,7 +117,7 @@ public class Implementation{
 
                 case 2:
 
-                    if (top == null) System.out.println("Stack Underflow! Stack is empty.");
+                    if (top == null) System.out.println("Stack Underflow and Stack is empty");
                     else {
                         int poppedElement = top.data;
                         top = top.next;
@@ -127,7 +127,7 @@ public class Implementation{
                     break;
 
                 case 3:
-                    if (top == null) System.out.println("Stack is empty. No peek element.");
+                    if (top == null) System.out.println("Stack is empty and No peek element");
                     else System.out.println("Peek element: " + top.data);
                     break;
 
@@ -142,7 +142,7 @@ public class Implementation{
                     break;
 
                 case 6:
-                    if (top == null) System.out.println("Stack is empty.");
+                    if (top == null) System.out.println("Stack is empty");
                     else {
                         Node current = top;
                         System.out.print("Stack elements: ");
@@ -158,7 +158,7 @@ public class Implementation{
                     return;
 
                 default:
-                    System.out.println("Enter a valid option.");
+                    System.out.println("Enter a valid option");
                     break;
             }
         }
