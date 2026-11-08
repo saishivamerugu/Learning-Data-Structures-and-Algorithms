@@ -4,6 +4,7 @@ public class RemoveOuterMostParenthesis {
         String str = "(()())(())";
         
         bruteForceApproach(str);
+        removeOuterParentheses(str);
     }
 
     public static void bruteForceApproach(String str){
@@ -29,25 +30,14 @@ public class RemoveOuterMostParenthesis {
         int depth = 0;
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-
             if (ch == '(') {
-
-                if (depth > 0) {
-                    result.append(ch);
-                }
-
+                if (depth > 0) result.append(ch);
                 depth++;
-
             } else {
-
                 depth--;
-
-                if (depth > 0) {
-                    result.append(ch);
-                }
+                if (depth > 0) result.append(ch);
             }
         }
-
         return result.toString();
     }
 }
