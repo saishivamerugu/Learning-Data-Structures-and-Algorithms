@@ -25,7 +25,7 @@ public class RemoveOuterMostParenthesis {
         } System.out.println(result);
     }
 
-    public String removeOuterParentheses(String s) {
+    public static void removeOuterParentheses(String s) {
         StringBuilder result = new StringBuilder();
         int depth = 0;
         for (int i = 0; i < s.length(); i++) {
@@ -38,7 +38,7 @@ public class RemoveOuterMostParenthesis {
                 if (depth > 0) result.append(ch);
             }
         }
-        return result.toString();
+        System.out.println(result);
     }
 }
 
