@@ -24,6 +24,20 @@ public class MissingElement {
     // TC: O(n)
     // SC: O(1)
 
+    public static void approach(int[] arr){
+        int j = 1;
+        for(int i = 0; i < arr.length; i++){
+            if (arr[i] == j) {
+                j++;
+            } else {
+                System.out.println(j + " is the missing element"); 
+                return;
+            }
+        }
+    } 
+    // TC : O(n)
+    // SC : O(1)
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 4, 5};
         int n = 5;
